@@ -1,0 +1,66 @@
+[
+    {
+        "apodo": "DRAC0.8",
+        "dificultad": "Intermedio",
+        "nivel": 1,
+        "puerta": 1,
+        "resultado": "Derrota",
+        "puntaje_final": -20
+    },
+    {
+        "apodo": "Juanito123",
+        "dificultad": "Facil",
+        "nivel": 1,
+        "puerta": 1,
+        "resultado": "Derrota",
+        "puntaje_final": -10
+    },
+    {
+        "apodo": "Juanito123",
+        "dificultad": "Intermedio",
+        "nivel": 2,
+        "puerta": 4,
+        "resultado": "Derrota",
+        "puntaje_final": 0
+    },
+    {
+        "apodo": "Juanito123",
+        "dificultad": "Intermedio",
+        "nivel": 1,
+        "puerta": 1,
+        "resultado": "Derrota",
+        "puntaje_final": -20
+    },
+    {
+        "apodo": "Juanito123",
+        "dificultad": "Facil",
+        "nivel": 1,
+        "puerta": 1,
+        "resultado": "Derrota",
+        "puntaje_final": -10
+    },
+    {
+        "apodo": "Juanito123",
+        "dificultad": "Facil",
+        "nivel": 1,
+        "puerta": 2,
+        "resultado": "Derrota",
+        "puntaje_final": 0
+    },
+    {
+        "apodo": "DRAC0.8",
+        "dificultad": "Intermedio",
+        "nivel": 1,
+        "puerta": 1,
+        "resultado": "Derrota",
+        "puntaje_final": -20
+    },
+    {
+        "apodo": "DRAC0.8",
+        "dificultad": "Intermedio",
+        "nivel": 1,
+        "puerta": 5,
+        "resultado": "Derrota",
+        "puntaje_final": -25
+    }
+]
