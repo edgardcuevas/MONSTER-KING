@@ -1,71 +1,221 @@
-import random
+from avatar import (
+    registrar_usuario,
+    iniciar_sesion,
+    eliminar_usuario
+)
+
+from menu import (
+    menu_principal,
+    menu_dificultad,
+    menu_partida_guardada,
+    mostrar_reglas
+)
+
+from reporte import (
+    cargar_progreso,
+    mostrar_historial
+)
+
+from juego import jugar
 
 
-
-puntaje = 10
-
-# Listas con las puertas de cada nivel.
-nivel1 = [1, 2, 3, 4, 5]
-nivel2 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-nivel3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+usuario_actual = None
 
 
-animales = ["Gato", "Leon", "Lobo", "Panda", "Tigre", "gallina-dorada"]
+while True:
 
+    menu_principal()
 
-print("JUEGO DE PUERTAS")
-print("Comienzas con", puntaje, "puntos.")
+    try:
 
+        opcion = int(
+            input("Seleccione una opción: ")
+        )
 
-juego_terminado = False
+        # REGISTRAR
 
+        if opcion == 1:
 
-for numero_nivel, puertas in [(1, nivel1), (2, nivel2), (3, nivel3)]:
-	print("\nComienza el Nivel", numero_nivel)
+            registrar_usuario()
 
-	for puerta in puertas:
-		input("Presiona ENTER para abrir la puerta " + str(puerta) + ": ")
+        # LOGIN
 
-		if numero_nivel == 3 and puerta == 14:
-			animal = "Dragon"
-			cambio = -100
-		elif numero_nivel == 3 and puerta == 15:
-			animal = "Princesa"
-		else:
-			animal = random.choice(animales)
+        elif opcion == 2:
 
-		if animal == "Gato":
-			cambio = 10
-		elif animal == "Leon":
-			cambio = -30
-		elif animal == "Lobo":
-			cambio = -20
-		elif animal == "Panda":
-			cambio = 20
-		elif animal == "Tigre":
-			cambio = -30
-		elif animal == "gallina-dorada":
-			cambio = 50
-		else:
-			cambio = 0
+            usuario = iniciar_sesion()
 
-		puntaje = puntaje + cambio
-		print("Puerta", puerta)
-		print("Aparecio:", animal)
-		print("Puntos ganados o perdidos:", cambio)
-		print("Puntaje actual:", puntaje)
+            if usuario:
 
-		if puntaje <= 0:
-			print("Losiento mucho, mejor suerte la próxima vez.")
-			juego_terminado = True
-			break
+                usuario_actual = usuario
 
-	if juego_terminado:
-		break
+        # REGLAS
 
-if juego_terminado:
-	print("Puntaje final:", puntaje)
-else:
-	print("\nTerminaste el juego.")
-	print("Felicidades, has rescatado a la princesa.")
-	print("Puntaje final:", puntaje)
+        elif opcion == 3:
+
+            mostrar_reglas()
+
+        # JUGAR
+
+        elif opcion == 4:
+
+            if not usuario_actual:
+
+                print(
+                    "\nDebe iniciar sesión primero."
+                )
+
+                continue
+
+            progreso = cargar_progreso()
+
+            if (
+                progreso
+                and progreso["apodo"]
+                == usuario_actual["apodo"]
+            ):
+
+                menu_partida_guardada()
+
+                try:
+
+                    opcion_partida = int(
+                        input(
+                            "Seleccione una opción: "
+                        )
+                    )
+
+                except ValueError:
+
+                    print(
+                        "Opción inválida."
+                    )
+
+                    continue
+
+                if opcion_partida == 1:
+
+                    jugar(
+                        usuario_actual,
+                        progreso["dificultad"],
+                        progreso
+                    )
+
+                elif opcion_partida == 2:
+
+                    menu_dificultad()
+
+                    try:
+
+                        dificultad = int(
+                            input(
+                                "Seleccione dificultad: "
+                            )
+                        )
+
+                    except ValueError:
+
+                        print(
+                            "Valor inválido."
+                        )
+
+                        continue
+
+                    if dificultad not in [1, 2, 3]:
+
+                        print(
+                            "Dificultad inválida."
+                        )
+
+                        continue
+
+                    jugar(
+                        usuario_actual,
+                        dificultad
+                    )
+
+                else:
+
+                    print(
+                        "Opción inválida."
+                    )
+
+            else:
+
+                menu_dificultad()
+
+                try:
+
+                    dificultad = int(
+                        input(
+                            "Seleccione dificultad: "
+                        )
+                    )
+
+                except ValueError:
+
+                    print(
+                        "Valor inválido."
+                    )
+
+                    continue
+
+                if dificultad not in [1, 2, 3]:
+
+                    print(
+                        "Dificultad inválida."
+                    )
+
+                    continue
+
+                jugar(
+                    usuario_actual,
+                    dificultad
+                )
+
+        # HISTORIAL
+
+        elif opcion == 5:
+
+            if not usuario_actual:
+
+                print(
+                    "\nDebe iniciar sesión primero."
+                )
+
+                continue
+
+            mostrar_historial(
+                usuario_actual["apodo"]
+            )
+
+        # ELIMINAR USUARIO
+
+        elif opcion == 6:
+
+            eliminar_usuario()
+
+            if usuario_actual:
+
+                usuario_actual = None
+
+        # SALIR
+
+        elif opcion == 7:
+
+            print(
+                "\nGracias por jugar Dragon King."
+            )
+
+            break
+
+        else:
+
+            print(
+                "\nOpción inválida."
+            )
+
+    except ValueError:
+
+        print(
+            "\nDebe ingresar un número."
+        )
