@@ -12,5 +12,12 @@
         "apodo": "Juanito123",
         "celular": "65432122",
         "descripcion": "juan"
+    },
+    {
+        "nombre": "Alberto",
+        "apellido": "Molina",
+        "apodo": "Dragonsito123",
+        "celular": "75144503",
+        "descripcion": "femboi"
     }
 ]

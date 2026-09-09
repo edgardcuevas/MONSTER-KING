@@ -62,5 +62,29 @@
         "puerta": 5,
         "resultado": "Derrota",
         "puntaje_final": -25
+    },
+    {
+        "apodo": "Dragonsito123",
+        "dificultad": "Dificil",
+        "nivel": 3,
+        "puerta": 14,
+        "resultado": "Derrota",
+        "puntaje_final": -150
+    },
+    {
+        "apodo": "Dragonsito123",
+        "dificultad": "Facil",
+        "nivel": 1,
+        "puerta": 2,
+        "resultado": "Derrota",
+        "puntaje_final": 0
+    },
+    {
+        "apodo": "Dragonsito123",
+        "dificultad": "Facil",
+        "nivel": 3,
+        "puerta": 15,
+        "resultado": "Victoria",
+        "puntaje_final": 60
     }
 ]
