@@ -14,6 +14,8 @@ def menu_principal():
 7. Salir
 
 ==================================================
+        Edgard Cuevas • Alberto Molina • Jeremy Oviedo
+==================================================
 """)
 
 
